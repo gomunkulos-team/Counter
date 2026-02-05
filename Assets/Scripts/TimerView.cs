@@ -1,12 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class TimerView : MonoBehaviour
+public class TimerView : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private TextMeshProUGUI _numberText;
-    [SerializeField] private Button _button;
     private float _number = 0;
     private float _timeInterval = 0.5f;
     private Coroutine _coroutine;
@@ -18,14 +17,9 @@ public class TimerView : MonoBehaviour
         _wait = new WaitForSecondsRealtime(_timeInterval);
     }
 
-    private void OnEnable()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        _button.onClick.AddListener(SwitchState);
-    }
-
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(SwitchState);
+        SwitchState();
     }
 
     private IEnumerator DisplayNumber()
