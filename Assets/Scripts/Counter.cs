@@ -1,25 +1,28 @@
+using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class TimerView : MonoBehaviour, IPointerDownHandler
+public class Counter : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _numberText;
-    private float _number = 0;
-    private float _timeInterval = 0.5f;
+    public event Action<float> NumberChanged;
     private Coroutine _coroutine;
+    private float _timeInterval = 0.5f;
+
+    public float Number { get; private set; }
 
     private WaitForSecondsRealtime _wait;
 
     private void Start()
     {
         _wait = new WaitForSecondsRealtime(_timeInterval);
+        Number = 0;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    private void Update()
     {
-        SwitchState();
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+            SwitchState();
     }
 
     private IEnumerator DisplayNumber()
@@ -27,8 +30,8 @@ public class TimerView : MonoBehaviour, IPointerDownHandler
         while (enabled)
         {
             yield return _wait;
-            _number++;
-            _numberText.text = _number.ToString();
+            Number++;
+            NumberChanged?.Invoke(Number);
         }
     }
 
