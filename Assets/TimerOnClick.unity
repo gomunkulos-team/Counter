@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 218831996}
   - component: {fileID: 218831995}
   - component: {fileID: 218831997}
-  - component: {fileID: 218831998}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -270,20 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f873a79500d5e4e4dbb6c5646826cb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimerView
-  _counter: {fileID: 218831998}
+  _counter: {fileID: 1627919763}
   _numberText: {fileID: 218831995}
---- !u!114 &218831998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218831993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ade18789f18864397cd2e952e945df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Counter
 --- !u!1 &511339866
 GameObject:
   m_ObjectHideFlags: 0
